@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        /* This line is to delay the launch screen for 3 seconds */
         Thread.sleep(forTimeInterval: 3)
+        
+        // This line is to enable IQKeyboardManagerSwift pod
+        IQKeyboardManager.shared.enable = true
         
         return true
     }
