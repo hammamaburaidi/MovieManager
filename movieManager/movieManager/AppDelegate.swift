@@ -17,10 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         /* This line is to delay the launch screen for 3 seconds */
-        Thread.sleep(forTimeInterval: 3)
+        Thread.sleep(forTimeInterval: 0.5)
         
         // This line is to enable IQKeyboardManagerSwift pod
         IQKeyboardManager.shared.enable = true
+        
+        // This line is to enable hide keyboard when the user touch outside the text field
+
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         
         return true
     }
