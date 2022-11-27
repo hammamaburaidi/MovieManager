@@ -13,12 +13,27 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var favBtn: UIButton!
     @IBOutlet weak var searchButton: UIBarButtonItem!
     
+    var object: Movie?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        watchlistBtn.titleLabel?.text = ""
-        favBtn.titleLabel?.text = ""
-
+        bindData()
+    }
+    
+    func bindData() {
+        guard let object = object else { return }
+        
+        self.title = object.name
+        
+        watchlistBtn.setTitle("", for: UIControl.State.normal)
+        favBtn.setTitle("", for: UIControl.State.normal)
+        
+        if (object.is_fav == false) {
+            favBtn.setImage(UIImage(systemName: "heart"), for: UIControl.State.normal)
+        } else {
+            favBtn.setImage(UIImage(systemName: "heart.fill"), for: UIControl.State.normal)
+        }
     }
     
     @IBAction func searchBtnPressed(_ sender: Any) {
@@ -26,8 +41,15 @@ class DetailsVC: UIViewController {
     }
     
     @IBAction func watchlistbtnPressed(_ sender: Any) {
+        
     }
     @IBAction func favBtnPressed(_ sender: Any) {
+        // Add movie to fav list uisng API
+        guard let object = object else { return }
+        
+        object.is_fav = !object.is_fav
+        
+        bindData()
     }
     
 }

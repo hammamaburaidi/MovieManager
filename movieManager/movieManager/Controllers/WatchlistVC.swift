@@ -12,7 +12,7 @@ class WatchlistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     @IBOutlet weak var lbltableview: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         lbltableview.delegate = self
         lbltableview.dataSource = self

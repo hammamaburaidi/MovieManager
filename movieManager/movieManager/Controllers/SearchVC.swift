@@ -9,52 +9,50 @@ import UIKit
 
 class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
-    var data = Data()
-    var arrName = ["Hammam","Student","University","Computer"]
-    var filteredArray: [String]!
+    var objects: [Movie] = Global.movies
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var lbltableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         lbltableView.dataSource = self
         lbltableView.delegate = self
         searchBar.delegate = self
-        
-        filteredArray = arrName
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredArray.count
+        return objects.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath)
-        cell.textLabel?.text = filteredArray[indexPath.row]
+        let obj = objects[indexPath.row]
+        
+        cell.textLabel?.text = obj.name
+        
         return cell
     }
     
     // Search Bar Config
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        objects = Global.movies.filter({ $0.name?.lowercased().starts(with: searchText.lowercased()) ?? false })
         
-        filteredArray = []
-        if searchText == "" {
-            filteredArray = arrName
-        } else{
-            for name in arrName {
-                if name.contains(searchText){
-                    filteredArray.append(name)
-                }
-            }
-        }
         self.lbltableView.reloadData()
     }
     
     // When user select a movie from table
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vcdetails = storyboard?.instantiateViewController(withIdentifier: "detailsID") as! DetailsVC
-        present(vcdetails, animated: false)
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let obj = objects[indexPath.row]
+        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "detailsID") as! DetailsVC
+        vc.object = obj
+        
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

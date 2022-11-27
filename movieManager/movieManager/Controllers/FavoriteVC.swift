@@ -9,7 +9,8 @@ import UIKit
 
 class FavoriteVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var lbltableview: UITableView!
-    var arrFavorite = [favoriteMoive]()
+    
+    var objects: [Movie] = [Movie]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,17 +19,23 @@ class FavoriteVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         lbltableview.delegate = self
         lbltableview.dataSource = self
         
-        arrFavorite.append(favoriteMoive.init(name: "Hammam", photo: UIImage(named: "Camera")!))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        objects = Global.movies.filter({ $0.is_fav })
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrFavorite.count
+        return objects.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell") as! FavoriteCell
-        let data = arrFavorite[indexPath.row]
-        cell.setupCell(photo: data.photo, name: data.name)
+        let obj = objects[indexPath.row]
+        
+        cell.setupCell(obj: obj)
         
         return cell
     }
@@ -37,9 +44,4 @@ class FavoriteVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return 100
     }
 
-}
-
-struct favoriteMoive {
-    let name: String
-    let photo: UIImage
 }

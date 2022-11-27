@@ -11,14 +11,15 @@ class FavoriteCell: UITableViewCell {
 
     @IBOutlet weak var lblMovieName: UILabel!
     @IBOutlet weak var imgs: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    func setupCell(photo: UIImage, name: String){
-        imgs.image = photo
-        lblMovieName.text = name
+    func setupCell(obj: Movie) {
+        imgs.image = obj.image_icon ?? UIImage.init(systemName: "")
+        lblMovieName.text = obj.name ?? "----"
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
