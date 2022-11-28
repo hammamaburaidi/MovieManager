@@ -8,8 +8,10 @@
 import UIKit
 
 class WatchlistVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var arrWatchlist = [watchlistMovie]()
     @IBOutlet weak var lbltableview: UITableView!
+    
+    var objects: [Movie] = [Movie]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -17,17 +19,24 @@ class WatchlistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         lbltableview.delegate = self
         lbltableview.dataSource = self
         
-        arrWatchlist.append(watchlistMovie.init(name: "Matrix", photo: UIImage(named: "Camera")!))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        objects = Global.movies.filter({ $0.is_watch_list })
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrWatchlist.count
+        return objects.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "watchListCell") as! WatchlistCell
-        let data = arrWatchlist[indexPath.row]
-        cell.setupCell(photo: data.photo, name: data.name)
+        
+        let obj = objects[indexPath.row]
+        
+        cell.setupCell(obj: obj)
         
         return cell
     }
@@ -35,9 +44,9 @@ class WatchlistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-}
-
-struct watchlistMovie {
-    let name: String
-    let photo: UIImage
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
 }

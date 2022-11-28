@@ -16,13 +16,10 @@ class WatchlistCell: UITableViewCell {
         // Initialization code
     }
     
-    func setupCell(photo: UIImage, name: String){
-        imgs.image = photo
-        lblMovieName.text = name
+    func setupCell(obj: Movie) {
+        imgs.image = obj.image_icon ?? UIImage.init(systemName: "")
+        lblMovieName.text = obj.name ?? "Not Available"
     }
-    
-    var data = Data()
-    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

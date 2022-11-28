@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         
-        /* This line is to delay the launch screen for 3 seconds */
+        /* This line is to delay the launch screen for 0.5 seconds */
         Thread.sleep(forTimeInterval: 0.5)
         
         // This line is to enable IQKeyboardManagerSwift pod
