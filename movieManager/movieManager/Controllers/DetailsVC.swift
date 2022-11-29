@@ -22,7 +22,7 @@ class DetailsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         bindData()
     }
     
@@ -31,6 +31,10 @@ class DetailsVC: UIViewController {
         
         self.title = object.name
         imagePoster.image = object.image_poster
+        descriptionLabel.text = object.details
+        dateLabel.text = object.date
+        rateLabel.text = object.rate
+        movieTitleLabel.text = object.name
         
         watchlistBtn.setTitle("", for: UIControl.State.normal)
         favBtn.setTitle("", for: UIControl.State.normal)

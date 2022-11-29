@@ -27,6 +27,13 @@ class WatchlistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         objects = Global.movies.filter({ $0.is_watch_list })
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        objects = Global.movies.filter({ $0.is_watch_list })
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return objects.count
     }

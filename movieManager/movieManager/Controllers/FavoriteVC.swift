@@ -15,6 +15,8 @@ class FavoriteVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        objects = Global.movies.filter({ $0.is_fav })
+        
         // Do any additional setup after loading the view.
         lbltableview.delegate = self
         lbltableview.dataSource = self
@@ -23,6 +25,12 @@ class FavoriteVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        objects = Global.movies.filter({ $0.is_fav })
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         objects = Global.movies.filter({ $0.is_fav })
     }

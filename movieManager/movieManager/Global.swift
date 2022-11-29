@@ -11,62 +11,15 @@ import UIKit
 class Global {
     
     static var movies = [
-        /* 1 */  Movie.init(name: "The 400 Blows (1959)"),
-        /* 2 */  Movie.init(name: "The Meg"),
-        /* 3 */  Movie.init(name: "The Fate of the Furious"),
-        /* 4 */  Movie.init(name: "Mechanic"),
-        /* 5 */  Movie.init(name: "The Expendables 3"),
-        /* 6 */  Movie.init(name: "Hummingbird"),
-        /* 7 */  Movie.init(name: "Parker"),
-        /* 8 */  Movie.init(name: "Truth in 24 II"),
-        /* 9 */  Movie.init(name: "Crank"),
-        /* 10 */ Movie.init(name: "The Pink Panther"),
-        /* 11 */ Movie.init(name: "Chaos"),
-        /* 12 */ Movie.init(name: "London"),
-        /* 13 */ Movie.init(name: "Transporter 2"),
-        /* 14 */ Movie.init(name: "Revolver"),
-        /* 15 */ Movie.init(name: "War"),
-        /* 16 */ Movie.init(name: "Gridiron Gang"),
-        /* 17 */ Movie.init(name: "Death Race"),
-        /* 18 */ Movie.init(name: "Turn It Up"),
-        /* 19 */ Movie.init(name: "Skyscraper"),
-        /* 20 */ Movie.init(name: "Fighting with My Family"),
-        /* 21 */ Movie.init(name: "Hobbs & Shaw"),
-        /* 22 */ Movie.init(name: "Jumanji: The Next Level"),
-        /* 21 */ Movie.init(name: "Jungle Cruise"),
-        /* 22 */ Movie.init(name: "Free Guy"),
-        /* 23 */ Movie.init(name: "Red Notice"),
-        /* 24 */ Movie.init(name: "League of Super-Pets"),
-        /* 25 */ Movie.init(name: "Black Adam"),
-        // images_poster
-//                 Movie.init(image_poster: UIImage(named: "String"))
-                 Movie.init(image_poster: UIImage(named: "Camera"))
-//        Movie.init(image_poster: UIImage(named: "Camera")),
-//        Movie.init(image_poster: UIImage(named: "AppIcon")),
-//        Movie.init(image_poster: UIImage(named: "Camera")),
-//        Movie.init(image_poster: UIImage(named: "AppIcon")),
-//        Movie.init(image_poster: UIImage(named: "Camera")),
-//        Movie.init(image_poster: UIImage(named: "AppIcon")),
-//        Movie.init(image_poster: UIImage(named: "Camera")),
-//        Movie.init(image_poster: UIImage(named: "AppIcon")),
-//        Movie.init(image_poster: UIImage(named: "Camera")),
-//        Movie.init(image_poster: UIImage(named: "AppIcon")),
-//        Movie.init(image_poster: UIImage(named: "Camera")),
-//        Movie.init(image_poster: UIImage(named: "AppIcon")),
-//        Movie.init(image_poster: UIImage(named: "Camera")),
-//        Movie.init(image_poster: UIImage(named: "AppIcon")),
-//        Movie.init(image_poster: UIImage(named: "Camera")),
-//        Movie.init(image_poster: UIImage(named: "AppIcon")),
-//        Movie.init(image_poster: UIImage(named: "Camera")),
-//        Movie.init(image_poster: UIImage(named: "AppIcon")),
-//        Movie.init(image_poster: UIImage(named: "Camera")),
-//        Movie.init(image_poster: UIImage(named: "AppIcon")),
-//        Movie.init(image_poster: UIImage(named: "Camera")),
-//        Movie.init(image_poster: UIImage(named: "AppIcon")),
-//        Movie.init(image_poster: UIImage(named: "Camera")),
-//        Movie.init(image_poster: UIImage(named: "AppIcon")),
-        //
+        // Static Movie's Data Without using API ( I haven't studied API topic "YET" )
+        /// Movie 1
+        Movie.init(name: "The Meg", details: "Previously thought to be extinct, a massive creature attacks a deep-sea submersible, leaving it disabled and trapping the crew at the bottom of the Pacific. With time running out, a visionary oceanographer recruits rescue diver Jonas Taylor to save the crew and the sea itself from an unimaginable threat -- a 75-foot-long prehistoric shark known as the Megalodon.", rate: "4.7", date: "29.11.2022", image_icon: UIImage(named: "TheMegPoster"), image_poster: UIImage(named: "TheMegPoster"), is_fav: false, is_watch_list: false),
+                 
+        /// Movie 2
+        Movie(name: "Fate of the Furious", details: "With Dom and Letty married, Brian and Mia retired and the rest of the crew exonerated, the globe-trotting team has found some semblance of a normal life. They soon face an unexpected challenge when a mysterious woman named Cipher forces Dom to betray them all. Now, they must unite to bring home the man who made them a family and stop Cipher from unleashing chaos.", rate: "4.1", date: "17.03.2016", image_icon: UIImage(named: "FAFPoster"), image_poster: UIImage(named: "FAFPoster"), is_fav: false, is_watch_list: false),
         
+        /// Movie 3
+        Movie(name: "Expendables", details: "The story follows the mercenary group known as The Expendables as they conflict with ruthless arms dealer Conrad Stonebanks, the Expendables co-founder, who is determined to destroy the team. The film premiered in London on August 4, 2014, and was released theatrically by Lionsgate on August 15, 2014. Unlike the first two films in the franchise, The Expendables 3 received a PG-13 rating instead of an R rating, which upset many fans of the franchise.", rate: "5.0", date: "28.04.2018", image_icon: UIImage(named: "ExpendablesPsoter"), image_poster: UIImage(named: "ExpendablesPsoter"), is_fav: false, is_watch_list: false)
         ]
 }
 
@@ -75,14 +28,14 @@ class Movie {
     
     var name: String?
     var details: String?
-    var rate: Double?
-    var date: Date?
+    var rate: String?
+    var date: String?
     var image_icon: UIImage?
     var image_poster: UIImage?
     var is_fav: Bool = false
     var is_watch_list: Bool = false
     
-    init(name: String? = nil, details: String? = nil, rate: Double? = nil, date: Date? = nil, image_icon: UIImage? = nil, image_poster: UIImage? = nil, is_fav: Bool = false, is_watch_list: Bool = false) {
+    init(name: String? = nil, details: String? = nil, rate: String? = nil, date: String? = nil, image_icon: UIImage? = nil, image_poster: UIImage? = nil, is_fav: Bool = false, is_watch_list: Bool = false) {
         self.name = name
         self.details = details
         self.rate = rate
